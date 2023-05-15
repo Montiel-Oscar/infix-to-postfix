@@ -1,0 +1,41 @@
+THIS NOTES ARE IN SPANISH
+
+Función precedencia(char operador):
+- Recibe un operador como parámetro (char).
+- Comprueba el tipo de operador y devuelve un valor numérico que indica su precedencia.
+- Si el operador es '+', '-', '*', o '/', devuelve 1 o 2 respectivamente, indicando baja precedencia.
+- Si el operador es '^', devuelve 3, indicando alta precedencia.
+- Si el operador no es reconocido, devuelve -1, indicando un operador inválido.
+
+
+Función infix_to_postfix(char *infix, char *postfix):
+- Recibe una expresión en notación infija y una cadena vacía para almacenar la expresión en notación postfija. Ámbas de tipo char*
+- Utiliza una pila para realizar la conversión de infija a postfija.
+- Recorre cada carácter de la expresión infija:
+  - Si el carácter es un espacio en blanco, lo ignora y pasa al siguiente.
+  - Si el carácter es alfanumérico (dígito o letra), lo agrega directamente al resultado postfijo.
+  - Si el carácter es un paréntesis de apertura ('('), lo inserta en la pila.
+  - Si el carácter es un paréntesis de cierre (')'), extrae los operadores de la pila y los agrega al resultado postfijo hasta encontrar el paréntesis de apertura correspondiente.
+  - Si el carácter es un operador, compara su precedencia con los operadores en la pila:
+    - Mientras la pila no esté vacía y el operador en la cima de la pila tenga igual o mayor precedencia que el carácter actual, extrae el operador de la pila y lo agrega al resultado postfijo.
+    - Luego, inserta el operador actual en la pila.
+- Después de procesar todos los caracteres de la expresión, extrae los operadores restantes de la pila y los agrega al resultado postfijo.
+- Agrega el carácter nulo al final de la cadena postfija.
+
+
+Función evaluar_expresion(const char *expresion):
+- Recibe una expresión en notación postfija y evalúa su resultado.
+- Utiliza una pila para realizar los cálculos.
+- Recorre cada carácter de la expresión postfija:
+  - Si el carácter es un espacio en blanco, lo ignora y pasa al siguiente.
+  - Si el carácter es un dígito, lee el número completo y lo inserta en la pila.
+  - Si el carácter es un operador ('+', '-', '*', '/', '^'), realiza la operación correspondiente utilizando los dos últimos valores de la pila y almacena el resultado en la pila.
+  - Si el carácter no es reconocido, muestra un error de operador inválido y devuelve 0.0.
+- Al finalizar, verifica si la pila tiene exactamente un valor, de lo contrario muestra un error de expresión inválida y devuelve 0.0.
+- Devuelve el valor resultante de la pila.
+
+
+Función procesarArchivo(const char *nombreArchivo):
+- Recibe el nombre de un archivo.
+- Abre el archivo en modo lectura.
+- Si no se puede abrir el archivo, muestra un mensaje de error
