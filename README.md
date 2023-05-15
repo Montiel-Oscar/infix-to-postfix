@@ -1,5 +1,5 @@
 # infix-to-postfix
-ExpressionEvaluator: Infix to postfix
+ExpressionEvaluator: Infix to postfix from a file using QUEUE & STACK
 DESCRIPTION:
 
 ExpressionEvaluator is a command-line C application that allows processing and evaluating mathematical expressions in infix notation. 
